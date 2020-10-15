@@ -1,20 +1,20 @@
 import java.time.format.DateTimeFormatter;
-import java.util.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Task {
     private String tasklistname;
-    private Date date;
-    private String status;
+    private Date duedate;
+    //TODO: Change to boolean
+    private String isDone;
 
     DateTimeFormatter formatter= DateTimeFormatter.ofPattern("yyyy-MM-DD");;
 
 
     public Task(String tasklistname, Date date, String status) {
         this.tasklistname = tasklistname;
-        this.date = date;
-        this.status = status;
+        this.duedate = date;
+        this.isDone = status;
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
     }
@@ -23,34 +23,27 @@ public class Task {
     }
     public String getlistname() { return tasklistname; }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(Date duedate) {
+        this.duedate = duedate;
     }
-    public Date getDate() { return date; }
+    public Date getDate() { return duedate; }
 
-    public void setStatus(String status) { this.status = status; }
-    public String getStatus() { return status; }
+    public void setIsDone(String isDone) { this.isDone = isDone; }
+    public String getIsDone() { return isDone; }
 
      public  String gettaskItem(){
-        return tasklistname + "" + date + "" + status;
+        return tasklistname + "" + duedate + "" + isDone;
 
      }
+
 
      @Override
     public String toString(){
         StringBuilder taskSB = new StringBuilder("");
         taskSB.append("Task " + tasklistname +"\n");
-        taskSB.append("Due date:"  + date+"\n");
-        taskSB.append("Status:  " + status);
+        taskSB.append("Due date:"  + duedate+"\n");
+        taskSB.append("Status:  " + isDone);
         return taskSB.toString();
      }
-
-
-
-
-
-
-
-
 
 }
