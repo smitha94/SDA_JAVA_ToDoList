@@ -4,7 +4,8 @@ import java.util.*;
 public enum  Commandss {
     /*The  List of  command actions */
   Show(1),ADD(2),EDIT(3),Quit(4),
-  UPDATE("a");
+ Update("a"),Markasdone("b"),Remove("c"),
+    Exit("d"),Qui("e");
 
 
 
