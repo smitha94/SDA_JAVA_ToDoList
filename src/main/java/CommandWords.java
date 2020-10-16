@@ -1,12 +1,19 @@
-/*
-package com.company;
+
+/*package com.company;
 import com.company.Commandss;
 import java.util.HashMap;
 import java.util.*;
+
 public class CommandWords {
     int commandvalue;
-    private HashMap<Integer, Commandss> validCommands= new HashMap<>();  //validCommands = new HashMap<>();
+    private HashMap<Integer, Commandss> validCommands= new HashMap<>();
+    //validCommands = new HashMap<>();
   /* Constructor - initialise the command words.*/
+
+ /*   HashMap<String, > map = new HashMap<String, Object>();
+    HashMap x  = new HashMap();
+*/
+
 
   /* public CommandWords() {
       //  validCommands =new HashMap<>();

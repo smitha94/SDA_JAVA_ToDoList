@@ -3,32 +3,35 @@ import com.sun.nio.sctp.PeerAddressChangeNotification;
 import java.util.*;
 public enum  Commandss {
     /*The  List of  command actions */
-  Show(1),ADD(2),EDIT(3),Quit(4),
- Update("a"),Markasdone("b"),Remove("c"),
-    Exit("d"),Qui("e");
+    Show(1), ADD(2), EDIT(3), Quit(4),
+    Update("a"), Markasdone("b"), Remove("c"),
+    Exit("d"), Qui("e");
 
 
-
-//----------------------------------
+    //----------------------------------
     private String commandstring;
-    Commandss( String commandstring)
-    {
-        this.commandstring= commandstring.toLowerCase(); //A, a
+
+    Commandss(String commandstring) {
+        this.commandstring = commandstring.toLowerCase(); //A, a
     }
-    public String getCommandstring()
-    {
+
+    public String getCommandstring() {
         return commandstring;
     }
-//----------------------------------------
+
+    //----------------------------------------
     private int commandnumber;
-    Commandss( int commandnumber)
-    {
-        this.commandnumber=commandnumber;
+
+    Commandss(int commandnumber) {
+        this.commandnumber = commandnumber;
     }
+
     public int getCommandnumber() {
         return commandnumber;
     }
+
 }
+
 //----------------------------------------------
 /*class Test{
 

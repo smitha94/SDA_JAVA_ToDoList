@@ -225,7 +225,8 @@ public class Todoprogram {
                 String command = inputedit.next();
                  switch (command){
                      case "a":
-                         //updateproject();
+                         //ls
+                         // updateproject();
                          break;
                      case "b":
                          System.out.println(" mark as done.. not done yet");
