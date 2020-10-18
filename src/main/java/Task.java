@@ -3,46 +3,50 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Task {
-    private String projectlistname;
+    private String projectname;
     private Date duedate;
-    //TODO: Change to boolean
-    private Boolean isDone;
-
+    private Boolean status;
+    private String taskname;
     DateTimeFormatter formatter= DateTimeFormatter.ofPattern("yyyy-MM-DD");;
 
 
-    public Task(String projectlistname, Date date, Boolean isDone) {
-        this.projectlistname =projectlistname;
-        this.duedate = date;
-        this.isDone= isDone;
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+    public Task(String projectlistname, Date duedate, Boolean status,String taskname)  {
+        this.projectname =projectlistname;
+        this.duedate = duedate;
+        this.status= false;
+        this.taskname= taskname;
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 
     }
     public void setprojectlistname(String projectlistname) {
-        this.projectlistname = projectlistname;
+        this.projectname = projectlistname;
     }
-    public String getprojectlistname() { return projectlistname ; }
+    public String getprojectlistname() { return projectname ; }
 
     public void setDate(Date duedate) {
         this.duedate = duedate;
     }
     public Date getDate() { return duedate; }
 
-    public void setisDone( Boolean isDone) { this.isDone = isDone; }
-    public  Boolean getisDone() { return isDone; }
+    public void setStatus( Boolean isDone) { this.status = status; }
+    public  Boolean getStatus() { return status; }
 
-     public  String gettaskItem(){
-        return  projectlistname + "" + duedate + "" + isDone;
+    public void setUsername( int assign){ this.taskname= taskname;}
+    public String getusername (){ return taskname;}
 
+
+    public  String gettaskItem(){
+        return  projectname + ": " + duedate + ": "+ status +": " +taskname +"\n";
      }
-
 
      @Override
     public String toString(){
         StringBuilder taskSB = new StringBuilder("");
-        taskSB.append("Project task   :: " + projectlistname +"\n");
+
+        taskSB.append("Project name   :: " + projectname +"\n");
         taskSB.append("Due date  :: "  + duedate+"\n");
-        taskSB.append("Status   ::  " + isDone);
+        taskSB.append("Status   ::  " + status+"\n");
+         taskSB.append("task name ::" + taskname);
         return taskSB.toString();
      }
 

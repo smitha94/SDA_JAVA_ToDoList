@@ -1,22 +1,21 @@
 
-/*package com.company;
-import com.company.Commandss;
+//import com.company.Commandss;
 import java.util.HashMap;
 import java.util.*;
 
 public class CommandWords {
-    int commandvalue;
-    private HashMap<Integer, Commandss> validCommands= new HashMap<>();
-    //validCommands = new HashMap<>();
-  /* Constructor - initialise the command words.*/
+    public static void main(String[] args) {
+        int commandvalue;
+       // private HashMap<Integer, Commandss> validCommands = new HashMap<>();
+    }
+    public CommandWords() {
+    }
+    // Constructor - initialise the command words.*/
+}
 
- /*   HashMap<String, > map = new HashMap<String, Object>();
-    HashMap x  = new HashMap();
-*/
 
-
-  /* public CommandWords() {
-      //  validCommands =new HashMap<>();
+   /*public CommandWords() {
+       validCommands =new HashMap<>();
         for ( command commandvalue : Commandss.values()) {
             validCommands.put(command,commandvalue);
         } }
@@ -30,6 +29,7 @@ public class CommandWords {
      }
      else
          return Commandss.Quit;
-    }
-}
-*/
+    }*/
+
+
+

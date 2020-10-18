@@ -1,5 +1,5 @@
 public class Main {
-    // Hello from main
+    // Aplicatiin is started from main
     public static void main(String[] args) {
          Todoprogram todo = new  Todoprogram();
           todo.printwelcome();
