@@ -1,11 +1,12 @@
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class TaskfeildTest {
-    Taskfeild task = new Taskfeild("Programming In Depth", new Date(), "true", "JavaScript");
+    Taskfeild task = new Taskfeild("Programming In Depth", LocalDate.now(), "true", "JavaScript");
     @Test
     void setprojectlistname() {
         task.setprojectlistname("Software Engineering");

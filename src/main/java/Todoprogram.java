@@ -2,23 +2,23 @@
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.*;
 import java.util.Date;
-import java.util.stream.*;
 
 public class Todoprogram {
-    List<Taskfeild> listOfTask = new ArrayList<>(); //new fileHandler.resd
     TaskList taskList = new TaskList();
-    private boolean setExit = false;
-    //------------    Functions of List begins here ---------------
-    public void Todoprogramaction() {
+    Scanner scanner = new Scanner(System.in);
 
-        Scanner inputval = new Scanner(System.in);
+    //------------    Functions of List begins here ---------------
+    public void Todoprogramaction() throws ParseException {
         boolean Y = true;
         do {
             printwelcome();
-            int command = inputval.nextInt();
+            int command= Integer.parseInt(scanner.nextLine());
+           // int command = checkInt(1, 4);
             switch (command) {
                 case 1:
                     showtasklist();
@@ -40,20 +40,20 @@ public class Todoprogram {
         } while (Y != false);
     }
 
-    public int checkInt()
-    {
-        Scanner scanner = new Scanner(System.in);
-        while (true)
-        {
-            try{
-                 int array[] ={1,2,3,4};
-                int x = scanner.nextInt();
-               if (x > array.length)
-                   Todoprogramaction();
-                   return x;
-            }
-            catch(InputMismatchException e)
-            {
+    public int checkInt(int min, int max) {
+        while (true) {
+            try {
+                //TODO decide one option
+                //String input = scanner.nextLine();
+                //int x = Integer.parseInt(input);
+
+                int x = Integer.parseInt(scanner.nextLine());
+                min=1; max=4;
+                if (x >= min && x <= max)
+                    return x;
+                else
+                    System.out.println("the number is too big or too small");
+            } catch (InputMismatchException e) {
                 System.out.println("please type a number");
             }
         }
@@ -68,262 +68,198 @@ public class Todoprogram {
         System.out.println("(4) Save and Quit");
         System.out.println("------------------------------------------");
     }
+
     //--------------   Show all the inserted task   ------------------------------
     public void showtasklist() {
-        boolean x = taskList.printList(null);
-        if (x == true) {
+        boolean s = taskList.printList();
+        if (s == true) {
             Scanner userchoice = new Scanner(System.in);
             boolean Y = true;
             do {
                 System.out.println("----------------------------------------------------");
                 System.out.println(" a ) Enter Sort by date wise ");
-                System.out.println( "b ) Sort by project task name  wise ");
+                System.out.println("b ) Sort by project task name  wise ");
                 System.out.println("c ) exit and Back to the main menu");
-               String command = userchoice.next();
+                String command = userchoice.next();
                 switch (command) {
                     case "a":
-                        ArrayList<Taskfeild> sort = taskList.getsortbydate();
-                        taskList.printList(sort);
+                        taskList.getsortbydate();
+                        taskList.printList();
                         //getsortbydate();
                         //Y = false; // one way to exit
                         break;
                     case "b":
-                         getSortedByProject();
-                        System.out.println("Total no in ToDo List are " + taskList.getSize());
+                        taskList.getSortedByProject();
+                        taskList.printList();
                         //return;  //another way to exit
-                        break;
-                    case "c":
-                        //quittask();
-                        //printwelcome();
-                        Y = false;
                         break;
                     default:
                         System.out.println("Wrong  Input");
-                         //quittask();
                         break;
                 }
             } while (Y != false);
             System.out.println("----    **       ---------");
-            //printwelcome();
         }
     }
 
-    //_------------------------sorting tasklist----------
-    public void getSortedByProject() {
-         List<Taskfeild> sortedList = listOfTask.stream()
-                .sorted(Comparator.comparing(Taskfeild::getprojectlistname))
-                //.forEach(task -> System.out.println(task.gettaskItem()))
-                .collect(Collectors.toList());
-        for (int i = 0; i < sortedList.size(); i++) {
-            System.out.println(sortedList.get(i));
-            System.out.println("Sorted project list" );
-            //printwelcome();
-        }
-}
-    //----------------------------------------------------------------------
-    public void getsortbydate() {
-
-        List<Taskfeild> sortedList = listOfTask.stream()
-                .sorted(Comparator.comparing(Taskfeild::getDate))
-                //.forEach(task -> System.out.println(task.gettaskItem()))
-                .collect(Collectors.toList());
-        for (int i = 0; i < sortedList.size(); i++) {
-            System.out.println(sortedList.get(i));
-            System.out.println("Sorted Datewise");
-            //quittask();
-            //printwelcome();
-        }
-    }
-//--------------------------------------------------------------------
-    public void addlist() {
-
-
-        try {
-            Scanner scanner = new Scanner(System.in);
+    //--------------------------------------------------------------------
+    public void addlist() throws ParseException {
+        if (!taskList.getList().isEmpty()) {
+            taskList.printList();
+        } else {
             System.out.print("Add project name   : ");
             String inputprojectname = scanner.nextLine().toLowerCase(); // get name from user
 
             System.out.print(" Enter the status  yes or no  :");
             // Loop until they enter either yes or no.
-            String inputstatus =scanner.nextLine();
-            boolean a=true;
-           do{
+            String inputstatus = scanner.nextLine();
+            boolean aa = true;
+            do {
                 // Use this to check if it is yes or no
-                if(inputstatus.equalsIgnoreCase("yes")){
+                if (inputstatus.equalsIgnoreCase("yes")) {
                     // Process yes
                     break;
-                }else if(inputstatus.equalsIgnoreCase("no")){
+                } else if (inputstatus.equalsIgnoreCase("no")) {
                     // Process no
                     break;
                 }
-               System.out.println(" Please enter yes or no");
+                System.out.println(" Please enter yes or no");
 
-            }while (a!=true);
+            } while (aa != true);
             System.out.print("Enter task name:");
-            String inputtaskname =scanner.next();
+            String inputtaskname = scanner.nextLine();
 
-            System.out.print ("Enter date of task¨  : dd/mm/yyyy    :");  //  get Date of the task from user
-            String inputdate1 = scanner.next();
-
-            Date dateFormat = new SimpleDateFormat("dd-mm-yy").parse(inputdate1);
-            Taskfeild task = new Taskfeild(inputprojectname, dateFormat, inputstatus,inputtaskname);
-            listOfTask.add(task);
-            System.out.println("-------list is addded -------------------");
+            System.out.print("Enter date of task¨  : dd-mm-yyyy    :");  //  get Date of the task from user
+            String inputdate1 = scanner.nextLine();
+            //Date dateFormat = new SimpleDateFormat("dd-mm-yy").parse(inputdate1); //TODO
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            LocalDate date = LocalDate.parse(inputdate1, dateFormat);
+            System.out.println(LocalDate.now());
+            //return inputdate1;
+            taskList.addTask(inputprojectname, date, inputtaskname, inputstatus);
+            System.out.println("-------List is addded -------------------------------");
             printwelcome();
-        } catch (ParseException e) {
-            System.out.println(" Wrong input date Please add again");
-            addlist();
-            e.printStackTrace();
-            return;
+            Todoprogramaction();
         }
-        Todoprogramaction();
-        System.out.println("--   ****  list is addded   ***------------------");
-        System.out.println("-------------------------------------------------");
-        printwelcome();
-        Todoprogramaction();
     }
     //--------------------Edit function -------------------------------------------------------
-    public void Edit() {
-        if (listOfTask.isEmpty()) {
-            System.out.println(" ****     WARNING   ::   Task List is Empty  ******** ");
-            System.out.println("------------------------------------------------------");
-            //printwelcome();
-        } else {
-            System.out.println("Please select the choice");
-            System.out.println("  1) Update / Edit  ");
-            System.out.println("  2) Mark as done");
-            System.out.println("  3) Remove");
-            System.out.println("  4) Exit");
-            Scanner inputedit = new Scanner(System.in);
-            System.out.println(" Enter correct option");
-            boolean Y = true;
-            do {
-                int option = inputedit.nextInt();
-                switch (option) {
-                    case 1:
-                        updateproject();
-                        break;
-                    case 2:
-                        System.out.println(" mark as done.. not done yet");
-                        break;
-                    case 3:
-                        deletelist();
-                        printwelcome();
-                        break;
-                    case 4:
-                        System.out.println("Your exiting the program");
-                        printwelcome();
-                        break;
-                    default:
-                        System.out.println("Wrong  Input (Please select 1,2,3,4) ");
-                        break;
-                }
-            } while (Y != false);
+
+    /**
+     * this edit method
+     *
+     * @throws ParseException
+     */
+    public void Edit() throws ParseException {
+        boolean x = taskList.printList();
+        if (x == true) {
+            if (taskList.printList()) {
+
+                boolean Y = true;
+                do {
+                    System.out.println("Please select the choice");
+                    System.out.println("  1) Update / Edit  ");
+                    System.out.println("  2) Mark as done");
+                    System.out.println("  3) Remove");
+                    System.out.println("  4) Exit");
+                    System.out.println(" Enter correct option");
+                    int option = Integer.parseInt(scanner.nextLine());
+                    switch (option) {
+                        case 1:
+                            updateproject();
+                            break;
+                        case 2:
+                            markasdone();
+                            break;
+                        case 3:
+                            deletelist();
+                            break;
+                        default:
+                            System.out.println("Wrong  Input (Please select 1,2,3,4) ");
+                            break;
+                    }
+                } while (Y != false);
+            }
         }
     }
     //----------------------Deleteing from the list------------------------------
     public void deletelist() {
-        if (listOfTask.isEmpty()) {
-            System.out.println("List Task is Empty,ADD project name ,Task  name, duedate, staus First");
-            addlist();
-        } else {
-
-            System.out.println("Total no in ToDo List are :" + listOfTask.size() +"\n");
-               for (int i = 0; i < listOfTask.size(); i++) {
-                System.out.println("Ths task number " + i + ": ");
-                System.out.println(listOfTask.get(i)+"\n");
-                System.out.println(" Task list  names" + listOfTask.get(i).getprojectlistname());
-                System.out.println(".......................................................");
-            }
-
+        if (taskList.printList()) {
             System.out.println(" please select Task no");
-            Scanner scanner = new Scanner(System.in);
-            int deletetask = scanner.nextInt();
-            for (int inde = 0; inde < listOfTask.size(); inde++)  // compare taskname with input from user
-            {
-                Taskfeild removetask = listOfTask.remove(deletetask);
-                System.out.println(removetask + " details removed from the tasklist ");
-                System.out.println("--------------------------------------------------");
-              boolean y=true;
-            }
-
+            int deletetask = Integer.parseInt(scanner.nextLine());
+            //scanner.nextLine(); //tODO
+            taskList.removeTask(deletetask);
         }
-     printwelcome();
     }
-    //-------------------Mark as done -----------------------------------------
-    public void markasdone(){
 
-    }
-//----------------------- Update project --------------------------------------
-    public void updateproject()
-    {
-      /*if (listOfTask.isEmpty()) {
-            System.out.println("Insert the Task Project to update");
-            if (listOfTask.size() == 0)
-                System.out.println("No such Task project is added");
-                addlist();
-        } else {*/
-        boolean x = taskList.printList(listOfTask);
-        if (x == true){
-             for (int i = 0; i < listOfTask.size(); i++) {
-                 System.out.println(i +" please select task no for edit");
-                 System.out.println(listOfTask.get(i)+"\n");
-                 }
-               Scanner scanner = new Scanner(System.in);
-               String projectno = scanner.nextLine();
-               int projno = Integer.parseInt(projectno);
+    //----------------------- Update project --------------------------------------
+    public void updateproject() throws ParseException {
+        if (taskList.printList()) {
+            int projno = Integer.parseInt(scanner.nextLine()); //checkInt(0, taskList.getSize()-1)
+            // int projno = checkInt(0, taskList.getSize() - 1);
+            if (taskList.getSize() < projno) { //TODO
+                System.out.println("index doesnot exits: " + projno);
+            } else {
+                Taskfeild tsk = taskList.getList().get(projno);
 
-            if(listOfTask.size()< projno) {
-              System.out.println("index doesnot exits");
-                }
-               Taskfeild tsk = listOfTask.get(projno);
-               System.out.println("  1-projectname ,  2 -duedate,, 3-taskname;");
-               String whattoupdate  = scanner.nextLine();
+                System.out.println("  1-projectname ,  2 -duedate,, 3-taskname;");
+                String whattoupdate = scanner.nextLine();
 
-            int chooseupdate = Integer.parseInt(whattoupdate);
-                switch (chooseupdate)
-                {
+                System.out.println("what to update: " + whattoupdate);
+
+                int chooseupdate = Integer.parseInt(whattoupdate);
+                switch (chooseupdate) {
                     case 1:
                         System.out.println(" Please  new  projet name ");
                         String newprojectname = scanner.nextLine();
                         tsk.setprojectlistname(newprojectname);
-                        System.out.println(" edited text"+tsk.toString());
+                        System.out.println(" edited text" + tsk.toString());
 
                         break;
-                    case 2 :
+                    case 2:
                         System.out.println(" Please  new  date ");
-                        String newpdate =  scanner.nextLine();
-                        try {
-                            Date dateFor = new SimpleDateFormat("dd/mm/yyyy").parse(newpdate);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
+                        String newpdate = scanner.nextLine();
+                        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-mm-yyyy");
+                        LocalDate date = LocalDate.parse(newpdate, dateFormat);
                         tsk.setprojectlistname(newpdate);
+                        System.out.println(" Edited new date" + tsk.toString());
                         break;
                     case 3:
-                       System.out.println(" Please  new  satus ");
-                       String newtaskname = scanner.nextLine();
-                       tsk.setprojectlistname(newtaskname);
-                       break;
+                        System.out.println(" Please  new  task ");
+                        String newtaskname = scanner.nextLine();
+                        tsk.setprojectlistname(newtaskname);
+                        System.out.println(" Edited new task" + tsk.toString());
+                        break;
                     default:
-                        System.out.println("wrong input");
+                        System.out.println("Wrong input");
                         break;
                 }
-
-
-          }
+            }
+        }
     }
 
-//----------------------for exiting the application-------------------------------
-        public void quittask () {
-            System.out.println(" Task list is exiting");
-            System.out.println(" Program is exiting  byeeeee");
-            System.exit(0);
-            setExit = true;
+    //-------------------Mark as done -----------------------------------------
+    public void markasdone() {
+        if (taskList.printList()) {
+            String projectno = scanner.nextLine(); //checkInt(0, taskList.getSize()-1)
+            int projno = checkInt(0, taskList.getSize() - 1);
+            Taskfeild tsk = taskList.getList().get(projno);
+            System.out.println(" Status,   yes / no;");
+            String newstatus = scanner.nextLine();
+            tsk.setStatus(newstatus);
+            System.out.println(" edited text" + tsk.toString());
         }
+    }
+
+    //----------------------for exiting the application-------------------------------
+    public void quittask() {
+        taskList.save();
+        System.out.println(" Task list is exiting");
+        System.out.println(" Program is exiting  byeeeee");
+        System.exit(0);
+    }
 }
 
-  //-----------   End of the todo application code   ------------------
+//-----------   End of the todo application code   ------------------
 
 
 

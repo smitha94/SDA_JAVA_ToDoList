@@ -1,39 +1,40 @@
-import java.io.Serializable;
-import java.time.LocalDate;
+import java.text.ParseException;
 import java.time.format.DateTimeFormatter;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
 
-public class Taskfeild implements Serializable
-{
+public class Taskfeild {
     private String projectname;
-    private LocalDate duedate;
+    private Date duedate;
     private String status;
     private String taskname;
     DateTimeFormatter formatter= DateTimeFormatter.ofPattern("yyyy-MM-DD");;
 
 
-    public Taskfeild(String projectlistname, LocalDate duedate, String status,String taskname)  {
+    public Taskfeild(String projectlistname, Date duedate, String status,String taskname)  {
         this.projectname =projectlistname;
         this.duedate = duedate;
         this.status= status;
         this.taskname= taskname;
-       SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+
     }
     public void setprojectlistname(String projectlistname) {
         this.projectname = projectlistname;
     }
     public String getprojectlistname() { return projectname ; }
 
-    public void setDate(LocalDate duedate) {
+    public void setDate(Date duedate) {
         this.duedate = duedate;
     }
-    public LocalDate getDate() { return duedate; }
+    public Date getDate() { return duedate; }
 
     public void setStatus( String isDone) { this.status = status; }
     public  String getStatus() { return status; }
 
-    public void settaskname( int assign){ this.taskname= taskname;}
-    public String gettaskname (){ return taskname;}
+    public void setUsername( int assign){ this.taskname= taskname;}
+    public String getusername (){ return taskname;}
 
 
     public  String gettaskItem(){
