@@ -32,8 +32,6 @@ Welcome to ToDolist
         b)To view list sorted by date -select the user option  ' b '
          user can view the tasks sorted by date.
         c)To view list sorted by project -select the user option ' c '
-         user can view the tasks sorted by project.
-         
 2) ** Add New List **
    User can add a new task to the List. To create a new task following information is required.
       - Project - User is prompted to enter.
@@ -51,5 +49,3 @@ Welcome to ToDolist
       * User can select to quit the application by saving the tasks in file.
 
    
-
-      * User can select option 5 to return to main menu
