@@ -10,7 +10,7 @@ User can also quit and save the current task list to file, and then restart the 
 
 User Manual
 
- When the application is launched user can navigate to any of the following options:
+When the application is launched user can navigate to any of the following options:
 
 It has some user defined interface and user has the following options
 Welcome to ToDolist
@@ -25,7 +25,7 @@ Welcome to ToDolist
  4)save and Quit
   ----------------------------
 
-1) **  Show Task List **
+1) Show Task List 
    Shows the list of available projects .
         a) Show Task List Menu - select the user option' a '
            User can see the all the stored project list 
@@ -33,20 +33,20 @@ Welcome to ToDolist
          user can view the tasks sorted by date.
         c)To view list sorted by project -select the user option ' c '
 
-2) ** Add New List **
+2) Add New List 
    User can add a new task to the List. To create a new task following information is required.
       - Project - User is prompted to enter.
       - Title - User is prompted to enter.
       - Due Date - User is prompted to enter.
       - Status - User has to type the status ' yes ' or 'no ' which means task done or not done.
 
-3) ** Edit List **
+3) Edit List 
       User can edit / update the registered project list by using selection option
          -User can select option 1 to change the Project Title,Duedate,Task name accoring to user choise.
         - User can select option 2 to change the Status like yes or no
         -User can select option 3 to  remove the  project list  by selecting the number of project list.
         -User can select option 4 to exit to main manu.
-4) *Save and Quit**
+4) Save and Quit
       * User can select to quit the application by saving the tasks in file.
 
    
