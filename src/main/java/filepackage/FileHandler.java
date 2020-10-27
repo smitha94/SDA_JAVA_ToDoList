@@ -1,8 +1,16 @@
+package filepackage;
+
+import model.Taskfeild;
 
 import java.io.*;
 import java.util.ArrayList;
 
-public class FileHandler
+/**
+ * The purpose of this class is used to perform operations related to files.
+ *  * Writing data in to a file, search in file ,reading data from file.
+ *
+ */
+public class FileHandler implements Serializable
 {
     private String path = "/Users/smithairvathraya/Desktop/ToDoListSDAproject/src/main/resources/"; // This is my path to my file
 
@@ -14,6 +22,10 @@ public class FileHandler
         return file;
     }
 
+    /**writeToFile(ArrayList<model.Taskfeild> list)
+     *this method is used to write a task in to file,returns a string indicating writing into file is success or not
+     * @param list
+     */
     //Object Stream
     public void writeAsObject(ArrayList<Taskfeild> list)
     {
@@ -31,6 +43,11 @@ public class FileHandler
         }
     }
 
+    /**
+     * readFromFile()
+     * operation of this function is to read task details from the file and it returns list of tasks.
+     * @return
+     */
 
 
     public ArrayList<Taskfeild> readAsObject()

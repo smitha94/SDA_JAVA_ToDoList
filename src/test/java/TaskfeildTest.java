@@ -1,7 +1,7 @@
+import model.Taskfeild;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,29 +26,16 @@ class TaskfeildTest {
 
     @Test
     void setDate() {
+        task.setStatus("LocalDate.now()");
+        assertEquals("LocalDate.now()", task.getprojectlistname());
     }
 
-    @Test
-    void getDate() {
-    }
 
     @Test
     void setStatus() {
+        task.setStatus("true");
+        assertEquals("true", task.getprojectlistname());
     }
 
-    @Test
-    void getStatus() {
-    }
 
-    @Test
-    void setUsername() {
-    }
-
-    @Test
-    void getusername() {
-    }
-
-    @Test
-    void gettaskItem() {
-    }
 }
