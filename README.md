@@ -1,3 +1,4 @@
+
 Project Name: ToDoList Application
 Author : Smitha Irvathraya
 ToDoListApplication  
@@ -14,6 +15,30 @@ When the application is launched user can navigate to any of the following optio
 
 It has some user defined interface and user has the following options
 Welcome to ToDolist
+<<<<<<< HEAD
+1)  Show Task List  
+
+    sort by date  
+    sort by project
+2) Add New List
+3) Edit List   
+    update    
+    mark as done for status    
+    remove    
+ 4)save and Quit
+  ----------------------------
+
+1) **  Show Task List **  
+   Shows the list of available projects .
+        a) Show Task List Menu - select the user option' a '      
+           User can see the all the stored project list     
+        b)To view list sorted by date -select the user option  ' b '    
+         user can view the tasks sorted by date.
+        c)To view list sorted by project -select the user option ' c '    
+         user can view the tasks sorted by project.
+         
+2) ** Add New List **      
+=======
 1)  Show Task List
     sort by date 
     sort by project
@@ -33,14 +58,35 @@ Welcome to ToDolist
          user can view the tasks sorted by date.
         c)To view list sorted by project -select the user option ' c '
 
+<<<<<<< HEAD
+2) ** Add New List **
+>>>>>>> 5005e2d4c355b49619f9aececba4277a06d7af9b
+=======
 2) Add New List 
+>>>>>>> f360dfa9294236a785fa4a7fa6fd164ff70f5f99
    User can add a new task to the List. To create a new task following information is required.
       - Project - User is prompted to enter.
       - Title - User is prompted to enter.
       - Due Date - User is prompted to enter.
       - Status - User has to type the status ' yes ' or 'no ' which means task done or not done.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+3) ** Edit List **     
+      User can edit / update the registered project list by using selection option
+         -User can select option 1 to change the Project Title,Duedate,Status,Task name accoring to user choise.   
+              user must type input status  ' yes '  or    ' no '     
+        -User can select option 2 to  remove the  project list  by selecting the number of project list.
+        -User can select option 3 to exit to main manu.
+4) *Save and Quit**
+      * User can select to quit the application by saving the tasks in file.
+
+ 
+=======
+3) ** Edit List **
+=======
 3) Edit List 
+>>>>>>> f360dfa9294236a785fa4a7fa6fd164ff70f5f99
       User can edit / update the registered project list by using selection option
          -User can select option 1 to change the Project Title,Duedate,Task name accoring to user choise.
         - User can select option 2 to change the Status like yes or no
@@ -50,3 +96,4 @@ Welcome to ToDolist
       * User can select to quit the application by saving the tasks in file.
 
    
+>>>>>>> 5005e2d4c355b49619f9aececba4277a06d7af9b
